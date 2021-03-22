@@ -97,6 +97,8 @@ const LazyImage: React.FC<Iprops> = (props: Iprops) => {
     const viewTop = getScrollTop();
     // 当前网页底部到最顶部的距离
     const viewBottom = viewTop + getClientHeight();
+    // 判断逻辑 图片的top 小于视图的bottom
+    // 图片的bottom 大于视图的top
     if (nodeBottom + offset >= viewTop && nodeTop - offset <= viewBottom) {
       setIsLoaded(true)
       window.removeEventListener('scroll', handleScroll);
@@ -106,10 +108,10 @@ const LazyImage: React.FC<Iprops> = (props: Iprops) => {
   }
 
 
-  const testThrottle = useCallback(() => {
-    const fn = throttle(() => console.log(222), 1000)
-    return fn
-  }, [])
+  // const testThrottle = useCallback(() => {
+  //   const fn = throttle(() => console.log(222), 1000)
+  //   return fn
+  // }, [])
 
   // const refCallback = useCallback((node) => {
   //   if (node) {
